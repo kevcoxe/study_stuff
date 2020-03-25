@@ -3,7 +3,6 @@ const express = require('express');
 const app = express();
 
 app.get('/api', (req, res) => {
-    console.log('yay it worked');
     return res.send('Hello world');
 });
 
