@@ -1,0 +1,13 @@
+// server.js
+const express = require('express');
+const app = express();
+
+app.get('/api', (req, res) => {
+    console.log('yay it worked');
+    return res.send('Hello world');
+});
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Server listening on port ${PORT}`);
+});

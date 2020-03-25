@@ -1,0 +1,36 @@
+version: "3.7"
+
+services:
+
+  frontend-react:
+    build: ./frontend-react
+    container_name: frontend-react
+    restart: always
+    volumes:
+      - 'myshare:/shared'
+
+  backend-node-express:
+    build: ./backend-node-express
+    container_name: backend_node_express
+    ports:
+      - 8000:8000
+    environment:
+      - NODE_ENV=development
+      - PORT=8000
+    command:
+      sh -c 'npm i && node index.js'
+
+  nginx-react:
+    build: ./nginx
+    container_name: nginx-react
+    restart: always
+    ports:
+      - "80:80"
+    volumes:
+      - 'myshare:/shared'
+    # links:
+    #   - frontend-react
+
+volumes:
+    myshare:
+      driver: local
