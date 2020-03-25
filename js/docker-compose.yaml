@@ -13,7 +13,7 @@ services:
     build: ./backend-node-express
     container_name: backend_node_express
     ports:
-      - 8000:8000
+      - "8000:8000"  # open this so we can use create react app development
     environment:
       - NODE_ENV=development
       - PORT=8000
@@ -28,8 +28,6 @@ services:
       - "80:80"
     volumes:
       - 'myshare:/shared'
-    # links:
-    #   - frontend-react
 
 volumes:
     myshare:
