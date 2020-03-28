@@ -1,0 +1,34 @@
+version: "3.7"
+
+services:
+
+  frontend-js-react:
+    build: ../js/frontend-react
+    container_name: frontend-js-react
+    restart: always
+    volumes:
+      - 'myshare:/shared'
+
+  backend-go:
+    build: ./backend-go
+    container_name: backend_go
+    ports:
+      - "8080:8080"  # open this so we can use create react app development
+    environment:
+      - NODE_ENV=development
+      - PORT=8080
+    command:
+      ./main
+
+  nginx:
+    build: ./nginx
+    container_name: nginx-stuff
+    restart: always
+    ports:
+      - "80:80"
+    volumes:
+      - 'myshare:/shared'
+
+volumes:
+    myshare:
+      driver: local
