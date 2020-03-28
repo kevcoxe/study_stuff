@@ -2,12 +2,12 @@ version: "3.7"
 
 services:
 
-  frontend-js-react:
-    build: ../js/frontend-react
-    container_name: frontend-js-react
-    restart: always
-    volumes:
-      - 'myshare:/shared'
+  #frontend-js-react:
+  #  build: ../js/frontend-react
+  #  container_name: frontend-js-react
+  #  restart: always
+  #  volumes:
+  #    - 'myshare:/shared'
 
   backend-go:
     build: ./backend-go
@@ -20,15 +20,15 @@ services:
     command:
       ./main
 
-  nginx:
-    build: ./nginx
-    container_name: nginx-stuff
-    restart: always
-    ports:
-      - "80:80"
-    volumes:
-      - 'myshare:/shared'
+  #nginx:
+  #  build: ./nginx
+  #  container_name: nginx-stuff
+  #  restart: always
+  #  ports:
+  #    - "80:80"
+  #  volumes:
+  #    - 'myshare:/shared'
 
-volumes:
-    myshare:
-      driver: local
+#volumes:
+#    myshare:
+#      driver: local
